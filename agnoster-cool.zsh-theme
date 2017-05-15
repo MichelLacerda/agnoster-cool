@@ -99,7 +99,7 @@ prompt_git() {
     dirty=$(parse_git_dirty)
     ref=$(git symbolic-ref HEAD 2> /dev/null) || ref="➦ $(git rev-parse --short HEAD 2> /dev/null)"
     if [[ -n $dirty ]]; then
-      prompt_segment yellow black
+      prompt_segment green black
     else
       prompt_segment green black
     fi
@@ -187,7 +187,7 @@ prompt_hg() {
 
 # Dir: current working directory
 prompt_dir() {
-  prompt_segment blue black '%1d'
+  prompt_segment blue black '%~'
 }
 
 # Virtualenv: current working virtualenv
@@ -199,7 +199,7 @@ prompt_virtualenv() {
 }
 
 function virtualenv_info {
-    [ $VIRTUAL_ENV ] && prompt_segment black yellow "$(basename $VIRTUAL_ENV)"
+    [ $VIRTUAL_ENV ] && prompt_segment yellow black "ⵙ $(basename $VIRTUAL_ENV)"
 }
 
 # Status:
